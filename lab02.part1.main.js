@@ -44,7 +44,6 @@ function getFirstIpAddress(cidrStr, callback) {
   // data as the second argument to the callback function.
   return callback(firstIpAddress, callbackError);
 }
-
 /**
  * Calculates an IPv4-mapped IPv6 address.
  * @param {string} ipv4 - An IPv4 address in dotted-quad format.
@@ -110,16 +109,13 @@ function main() {
     console.log(`\n--- Test Number ${i + 1} getFirstIpAddress(${sampleCidrs[i]}) ---`);
     // Call getFirstIpAddress and pass the test subnet and an anonymous callback function.
     // The callback is using the fat arrow operator: () => { }
-    
     getFirstIpAddress(sampleCidrs[i], (data, error) => {
       // Now we are inside the callback function.
       // Display the results on the console.
-       
       if (error) {
         console.error(`  Error returned from GET request: ${error}`);
       }
-    let mappedAddress = data!=null?getIpv4MappedIpv6Address(data):null;
-      console.log(`  Response returned from GET request: {"ipv4":${data},"ipv6":"${mappedAddress}"}`);
+      console.log(`  Response returned from GET request: ${data}`);
     });
   }
   // Iterate over sampleIpv4s and pass the element's value to getIpv4MappedIpv6Address().
